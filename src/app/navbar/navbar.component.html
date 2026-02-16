@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo.png" alt="" width="30" height="24" class="me-2">
+      MyStore
+    </a>
+
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/home">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/products">Products</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/cart">Cart</a></li>
+      </ul>
+
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item me-3">
+          <input type="text" class="form-control" placeholder="Search">
+        </li>
+
+        <li class="nav-item dropdown">
+          <button
+            type="button"
+            class="btn nav-link dropdown-toggle"
+            data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle fs-4"></i>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/signup">SignIn</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,48 @@
+ 
+<div class="container mt-4">
+  <h3>Your Cart</h3>
+
+  <!-- Empty cart -->
+  <p *ngIf="cartItems.length === 0">
+    Your cart is empty.
+  </p>
+
+  <!-- Cart table -->
+  <table
+    class="table"
+    *ngIf="cartItems.length > 0">
+
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of cartItems; let i = index">
+        <td>{{ item.title }}</td>
+        <td>₹ {{ item.price }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="removeItem(i)">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Total + checkout -->
+  <div *ngIf="cartItems.length > 0" class="text-end">
+    <h5>Total: ₹ {{ total }}</h5>
+
+    <a
+      routerLink="/checkout"
+      class="btn btn-success mt-2">
+      Proceed to Checkout
+    </a>
+  </div>
+</div>
