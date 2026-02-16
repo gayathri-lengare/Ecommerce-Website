@@ -1,16 +1,19 @@
 .product-card {
-  border-radius: 18px;
+  border-radius: 10px;
   overflow: hidden;
   transition: 0.3s ease;
   background: #ffffff;
+  padding: 15px;
+
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Image Wrapper */
+ 
 .product-img-wrapper {
   position: relative;
   overflow: hidden;
@@ -40,12 +43,9 @@
   color: #111;
 }
 
-/* Discount Badge */
-.discount-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 20px;
-}
+ .btn{
+ 
+  color: darkblue;
+  border-radius: 2px;
+  padding: 8px 16px;
+ }

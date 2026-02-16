@@ -1,20 +1,31 @@
 <div class="row g-4">
 
   @for (product of products; track product.id) {
-    
+
     <div class="col-lg-3 col-md-4 col-6">
-      
+
       <div class="card product-card h-100 border-0">
 
-        <!-- Image -->
-        <div class="product-img-wrapper">
-          <img 
-            [src]="product.image || product.images?.[0]" 
-            class="card-img-top product-img"
-            (error)="onImgError($event)"
-            alt="{{ product.title }}"
-          />
-        </div>
+        <!-- Image Wrapper -->
+       <div class="product-img-wrapper">
+
+   <!-- product-list.component.html:21 -->
+    <img src=" ";  >
+    
+
+     
+
+  @if (product.images?.length > 1) {
+    <img 
+      [src]="product.images[1]"
+      (error)="onImgError($event)"
+      class="product-img hover-img"
+        alt="Hover Image"
+    />
+  }
+
+</div>
+
 
         <!-- Body -->
         <div class="card-body text-center">
@@ -22,7 +33,7 @@
             {{ product.title }}
           </h6>
           <p class="product-price">
-            ₹ {{ product.price }}
+             {{ Price |currency : 'INR'}}
           </p>
         </div>
 
@@ -30,13 +41,13 @@
         <div class="card-footer bg-transparent border-0 text-center">
 
           <button
-            class="btn btn-dark btn-sm rounded-pill px-4 mb-2 w-100"
+            class="btn btn-outline-dark btn-sm rounded-pill px-4 mb-2 w-100"
             (click)="addToCart(product)">
             Add to Cart
           </button>
 
           <a
-            class="btn btn-outline-dark btn-sm rounded-pill w-100"
+            class="btn btn btn-info btn-sm rounded-pill w-100"
             [routerLink]="['/products', product.id]">
             View Details
           </a>

@@ -4,11 +4,12 @@ import { HomeComponent } from "./home/home.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { FormsModule } from '@angular/forms';
+import { CurrencyPipe } from './Pipe/currency.pipe';
    
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, NavbarComponent, FooterComponent,FormsModule],
+  imports: [RouterOutlet, HomeComponent, NavbarComponent, FooterComponent,FormsModule,CurrencyPipe],
   standalone:true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

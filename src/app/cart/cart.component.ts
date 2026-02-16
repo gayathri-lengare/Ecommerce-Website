@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CartService } from '../Services/cart.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CurrencyPipe } from '../Pipe/currency.pipe';
 
 @Component({
   selector: 'app-cart',
   standalone:true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,CurrencyPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
