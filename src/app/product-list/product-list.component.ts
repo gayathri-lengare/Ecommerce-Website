@@ -3,19 +3,20 @@ import { ProductService } from '../Services/product.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../Services/cart.service';
-import { CurrencyPipe } from '../Pipe/currency.pipe';
+import { PriceFormatPipe } from '../Pipe/price-format.pipe';
+ 
 
 @Component({
   selector: 'app-product-list',
   standalone: true,                         
-  imports: [CommonModule, RouterLink,CurrencyPipe],
+  imports: [CommonModule, RouterLink,PriceFormatPipe],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],    
 })
 export class ProductListComponent {
 
   products: any[] = [];
-  Price: number = 0;
+ 
 
   constructor(
     private productServices: ProductService,

@@ -4,12 +4,12 @@ import { HomeComponent } from "./home/home.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { FormsModule } from '@angular/forms';
-import { CurrencyPipe } from './Pipe/currency.pipe';
+import { PriceFormatPipe } from './Pipe/price-format.pipe';
    
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, NavbarComponent, FooterComponent,FormsModule,CurrencyPipe],
+  imports: [RouterOutlet, HomeComponent, NavbarComponent, FooterComponent,FormsModule,PriceFormatPipe],
   standalone:true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

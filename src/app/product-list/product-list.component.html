@@ -10,7 +10,8 @@
        <div class="product-img-wrapper">
 
    <!-- product-list.component.html:21 -->
-    <img src=" ";  >
+    <img
+     src="product.images";  >
     
 
      
@@ -33,7 +34,7 @@
             {{ product.title }}
           </h6>
           <p class="product-price">
-             {{ Price |currency : 'INR'}}
+             {{ product.price |priceFormat : '$ '}}
           </p>
         </div>
 

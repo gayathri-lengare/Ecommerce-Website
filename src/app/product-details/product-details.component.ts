@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../Services/product.service';
 import { CartService } from '../Services/cart.service';
-import { CurrencyPipe } from '../Pipe/currency.pipe';
+
 
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule,CurrencyPipe],
+  imports: [CommonModule],
   standalone:true,
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
@@ -16,7 +16,7 @@ export class ProductDetailsComponent {
 
   product : any;
   loading = true;
-Price: number=0;
+ 
 
   constructor(
     private route : ActivatedRoute ,
