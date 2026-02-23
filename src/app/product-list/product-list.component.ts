@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../Services/cart.service';
 import { PriceFormatPipe } from '../Pipe/price-format.pipe';
+import { ToastrService } from 'ngx-toastr';
  
 
 @Component({
   selector: 'app-product-list',
   standalone: true,                         
-  imports: [CommonModule, RouterLink,PriceFormatPipe],
+  imports: [CommonModule, RouterLink, PriceFormatPipe],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],    
 })
@@ -19,6 +20,7 @@ export class ProductListComponent {
  
 
   constructor(
+    private toastr:ToastrService,
     private productServices: ProductService,
     private cartService: CartService
   ) {}
@@ -26,7 +28,7 @@ export class ProductListComponent {
   //  Add To Cart
   addToCart(product: any) {
     this.cartService.addToCart(product);
-    alert('product is added to cart');
+    this.toastr.success("Product added to cart!","Success");
   }
 
   //  API Call
@@ -46,3 +48,4 @@ export class ProductListComponent {
 
 
 }
+

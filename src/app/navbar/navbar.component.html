@@ -36,11 +36,31 @@
 
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" routerLink="/login">Login</a></li>
-            <li><a class="dropdown-item" routerLink="/signup">SignIn</a></li>
+            <li><a class="dropdown-item" routerLink="/signup">signup</a></li>
+              <li><a class="dropdown-item" routerLink="/signup">Logout</a></li>
+
+
+                @if (isLoggedIn()) {
+          <li class="nav-item">
+            <span class="nav-link text-warning">
+              Hello, {{ getUser()?.name }}
+            </span>
+          </li>
+
+          <li class="nav-item">
+            <button class="btn btn-sm btn-danger" (click)="logout()">
+              Logout
+            </button>
+          </li>
+        }
+              
           </ul>
         </li>
       </ul>
 
+
+
+      
     </div>
   </div>
 </nav>

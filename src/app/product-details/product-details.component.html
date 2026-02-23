@@ -1,60 +1,79 @@
 <div class="container mt-4">
 
-  <p *ngIf="loading">Loading product...</p>
+  @if (loading) {
+    <p>Loading product...</p>
+  }
 
-  <div *ngIf="product" class="row">
+  @if (product) {
+    <div class="row">
 
-    <!-- LEFT: Images -->
-    <div class="col-md-6">
+      <!-- LEFT: Images -->
+      <div class="col-md-6">
 
-      <!-- Main image -->
-      <img
-        *ngIf="product.images && product.images.length > 0"
-        [src]="product.images[0]"
-        (error)="onImgError($event)"
-        class="img-fluid mb-3 border"
-        style="height:350px; object-fit:cover;"
-      />
+        <!-- Main Image -->
+        @if (selectedImage) {
+          <img
+            [src]="selectedImage"
+            (error)="onImgError($event)"
+            class="img-fluid mb-3 border"
+            style="height:350px; object-fit:cover;"
+          />
+        } @else {
+          @if (product.images?.length > 0) {
+            <img
+              [src]="product.images[0]"
+              (error)="onImgError($event)"
+              class="img-fluid mb-3 border"
+              style="height:350px; object-fit:cover;"
+            />
+          }
+        }
 
-      <!-- Thumbnails -->
-      <div class="d-flex gap-2">
-        <img
-          *ngFor="let img of product.images"
-          [src]="img"
-          (error)="onImgError($event)"
-          class="border"
-          style="width:70px; height:70px; object-fit:cover;"
-        />
+        <!-- Thumbnails -->
+        @if (product.images?.length > 0) {
+          <div class="d-flex gap-2">
+            @for (img of product.images; track img) {
+              <img
+                [src]="img"
+                (click)="selectedImage = img"
+                (error)="onImgError($event)"
+                class="border"
+                style="width:70px; height:70px; object-fit:cover; cursor:pointer;"
+              />
+            }
+          </div>
+        }
+
       </div>
-    </div>
 
-    <!-- RIGHT: Details -->
-    <div class="col-md-6">
-      <h3>{{ product.title }}</h3>
+      <!-- RIGHT: Details -->
+      <div class="col-md-6">
+        <h3>{{ product.title }}</h3>
 
-      <h4 class="text-success mt-2">
-        {{product.price |currency : 'INR'}}
-      </h4>
+        <h4 class="text-success mt-2">
+          {{ product.price | currency:'INR' }}
+        </h4>
 
-      <p class="mt-3">
-        {{ product.description }}
-      </p>
+        <p class="mt-3">
+          {{ product.description }}
+        </p>
 
-      <div class="mt-4">
-        <button  
-          class="btn btn-light btn-sm rounded-pill px-4 mb-2 w-100"
-          (click)="addToCart()">
-          Add to Cart
-        </button>
+        <div class="mt-4">
+          <button  
+            class="btn btn-light btn-sm rounded-pill px-4 mb-2 w-100"
+            (click)="addToCart()">
+            Add to Cart
+          </button>
 
-        <button
-          class="btn btn-warning btn-sm rounded-pill w-100"
-          (click)="buyNow()">
-          Buy Now
-        </button>
+          <button
+            class="btn btn-warning btn-sm rounded-pill w-100"
+            (click)="buyNow(product)">
+            Buy Now
+          </button>
+        </div>
       </div>
-    </div>
 
-  </div>
+    </div>
+  }
+
 </div>
-

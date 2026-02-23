@@ -16,6 +16,9 @@ export class ProductDetailsComponent {
 
   product : any;
   loading = true;
+  selectedImage: string | null = null;
+  cartItems: any[] | undefined;
+
  
 
   constructor(
@@ -25,19 +28,15 @@ export class ProductDetailsComponent {
     private router :Router
   ){}
 
-ngOnInit(){
-  const id = Number(this.route.snapshot.paramMap.get('id'));
+ngOnInit() {
+  const nav = this.router.getCurrentNavigation();
+  const buyNowProduct = nav?.extras.state?.['buyNowProduct'];
 
-  this.productService.getProductById(id).subscribe({
-  next: (res)=>{
-    this.product = res;
-    this.loading = false;
-  },
-  error: ()=>{
-    alert('Product not found');
-    this.router.navigate(['/products']);
+  if (buyNowProduct) {
+    this.cartItems = [{ ...buyNowProduct, quantity: 1 }];
+  } else {
+    this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
   }
-});
 
 }
 
@@ -45,10 +44,21 @@ addToCart(){
   this.cartService.addToCart(this.product);
   alert('Product added to cart');
 }
+buyNow(product: any) {
 
-buyNow(){
-  localStorage.setItem('buyNow' ,JSON.stringify(this.product));
-  this.router.navigate(['/order-confirmation']);
+  // Clear previous cart  
+  localStorage.removeItem('cart');
+
+  // Add only this product
+  const cartItem = {
+    ...product,
+    quantity: 1
+  };
+
+  localStorage.setItem('cart', JSON.stringify([cartItem]));
+
+  // Go to checkout
+  this.router.navigate(['/checkout']);
 }
 
 onImgError(event:Event){

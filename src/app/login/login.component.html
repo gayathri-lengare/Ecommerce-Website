@@ -1,0 +1,58 @@
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow-lg border-0 rounded-4 p-4">
+
+        <h3 class="text-center mb-4">Login</h3>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input 
+              type="email"
+              class="form-control"
+              formControlName="email">
+
+            @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+              <div class="text-danger mt-1">
+                Please enter valid email
+              </div>
+            }
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input 
+              type="password"
+              class="form-control"
+              formControlName="password">
+
+            @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+              <div class="text-danger mt-1">
+                Password must be at least 6 characters
+              </div>
+            }
+          </div>
+
+          <!-- Remember Me -->
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input">
+            <label class="form-check-label">Remember me</label>
+          </div>
+
+          <!-- Button -->
+          <button 
+            type="submit"
+            class="btn btn-primary w-100">
+            Login
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>

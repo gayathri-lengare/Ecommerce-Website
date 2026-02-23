@@ -5,11 +5,12 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { FormsModule } from '@angular/forms';
 import { PriceFormatPipe } from './Pipe/price-format.pipe';
-   
-
+ 
+ 
+ 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, NavbarComponent, FooterComponent,FormsModule,PriceFormatPipe],
+  imports: [RouterOutlet, HomeComponent,NavbarComponent, FooterComponent,FormsModule,PriceFormatPipe ],
   standalone:true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
